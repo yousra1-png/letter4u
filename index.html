@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Monthsary ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #5c0b24, #21000d 55%, #0d0005);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    opacity: 0.7;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    width: min(92vw, 600px);
+    padding: 35px 25px;
+    text-align: center;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 28px;
+
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #ffb6c9;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(45px, 12vw, 75px);
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 25px rgba(255,100,150,.5);
+}
+
+.subtitle {
+    color: #ffd6e1;
+    margin-bottom: 30px;
+}
+
+/* Envelope */
+
+.envelope-container {
+    margin: 30px auto;
+    width: 230px;
+    height: 150px;
+    position: relative;
+    cursor: pointer;
+    perspective: 700px;
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    background: #8f153d;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.4);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    border-left: 115px solid transparent;
+    border-right: 115px solid transparent;
+    border-top: 85px solid #b32150;
+
+    transform-origin: top;
+    transition: transform .8s ease;
+    z-index: 3;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.envelope::after {
+    content: "♥";
+    position: absolute;
+    font-size: 40px;
+    color: #fff;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    transition: opacity .3s;
+}
+
+.envelope.open::after {
+    opacity: 0;
+}
+
+/* Letter */
+
+.letter {
+    display: none;
+    text-align: left;
+    background: #fff5f7;
+    color: #3d0718;
+    padding: 28px 23px;
+    border-radius: 12px;
+    margin-top: 25px;
+    line-height: 1.8;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+.letter.show {
+    display: block;
+    animation: letterIn 1s ease;
+}
+
+@keyframes letterIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 34px;
+    color: #9c1644;
+    margin-bottom: 15px;
+}
+
+#typing {
+    white-space: pre-line;
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+}
+
+/* Button */
+
+button {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #ff4f81, #b5124b);
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255,60,120,.3);
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(255,60,120,.45);
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+.music {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #dca6b5;
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 30px 17px;
+        border-radius: 22px;
+    }
+
+    .envelope-container {
+        width: 200px;
+        height: 130px;
+    }
+
+    .envelope::before {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-top-width: 75px;
+    }
+
+    .letter {
+        padding: 22px 17px;
+    }
+
+    #typing {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+
+<div class="hearts">
+    <div class="heart" style="left:5%; animation-duration:8s;">♥</div>
+    <div class="heart" style="left:15%; animation-duration:11s;">♡</div>
+    <div class="heart" style="left:27%; animation-duration:7s;">♥</div>
+    <div class="heart" style="left:40%; animation-duration:10s;">♡</div>
+    <div class="heart" style="left:55%; animation-duration:8s;">♥</div>
+    <div class="heart" style="left:68%; animation-duration:12s;">♡</div>
+    <div class="heart" style="left:80%; animation-duration:9s;">♥</div>
+    <div class="heart" style="left:92%; animation-duration:7s;">♡</div>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="small">Another month with you</div>
+
+        <h1>Happy Monthsary ❤️</h1>
+
+        <p class="subtitle">
+            To my favorite person in the whole world ✨
+        </p>
+
+        <!-- Envelope -->
+
+        <div class="envelope-container" onclick="openLetter()">
+            <div class="envelope" id="envelope"></div>
+        </div>
+
+        <button onclick="openLetter()">
+            Open My Letter 💌
+        </button>
+
+        <!-- Letter -->
+
+        <div class="letter" id="letter">
+
+            <h2>To You, My Love ❤️</h2>
+
+            <div id="typing"></div>
+
+        </div>
+
+        <div class="music">
+            🎵 Tap the button to open your surprise
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Confetti Library -->
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+
+const message = `Happy monthsary, my favorite person. ❤️
+
+Another month has passed, and somehow you still manage to make my days brighter just by being in them.
+
+I'm grateful for every conversation, every laugh, every little moment, and all the memories we've made together.
+
+Even when we're far apart, you have a special way of making the distance feel a little smaller.
+
+I hope we get to celebrate many, many more months together.
+
+Thank you for being you.
+
+Happy monthsary. ❤️
+
+— Yours always`;
+
+let opened = false;
+
+function openLetter() {
+
+    if (opened) return;
+
+    opened = true;
+
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+        letter.classList.add("show");
+        typeMessage();
+        launchConfetti();
+    }, 700);
+}
+
+
+/* Typing animation */
+
+function typeMessage() {
+
+    const typing = document.getElementById("typing");
+
+    let index = 0;
+
+    function type() {
+
+        if (index < message.length) {
+
+            typing.textContent += message.charAt(index);
+
+            index++;
+
+            setTimeout(type, 25);
+        }
+    }
+
+    type();
+}
+
+
+/* Confetti */
+
+function launchConfetti() {
+
+    const duration = 4 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 70,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 70,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+
+    })();
+
+    // Heart-shaped-ish celebration burst
+
+    setTimeout(() => {
+
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            startVelocity: 35,
+            origin: {
+                x: 0.5,
+                y: 0.5
+            }
+        });
+
+    }, 500);
+}
+
+</script>
+
+</body>
+</html>
