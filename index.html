@@ -339,10 +339,13 @@ button:active {
 
         </div>
 
-        <div class="music">
-            🎵 Tap the button to open your surprise
-        </div>
+       <div class="music">
+    🎵 Playing the song ❤️
 
+    <audio id="music" loop>
+        <source src="New West - Those Eyes (Lyrics).mp3" type="audio/mpeg">
+    </audio>
+</div>
     </div>
 
 </div>
@@ -376,13 +379,25 @@ function openLetter() {
 
     const envelope = document.getElementById("envelope");
     const letter = document.getElementById("letter");
+    const music = document.getElementById("music");
 
+    // Open envelope
     envelope.classList.add("open");
 
+    // Start the song 🎵
+    music.play().catch(error => {
+        console.log("Music could not autoplay:", error);
+    });
+
+    // Open letter
     setTimeout(() => {
+
         letter.classList.add("show");
+
         typeMessage();
+
         launchConfetti();
+
     }, 700);
 }
 
